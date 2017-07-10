@@ -19,6 +19,10 @@ class Account
 
   def withdraw(amount)
     @balance -= amount
+    @transactions << { date: Time.now,
+                       credit: nil,
+                       debit: amount,
+                       balance: @balance }
   end
 
   def print_statement

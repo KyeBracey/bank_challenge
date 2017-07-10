@@ -12,12 +12,24 @@ describe 'Statement Printing' do
     account.print_statement
   end
 
-  it 'Handles statement printing with one transaction' do
+  it 'Statement with one transaction can be printed' do
     account.deposit(500)
     expect(STDOUT).to receive(:puts)
       .with('date || credit || debit || balance')
     expect(STDOUT).to receive(:puts)
       .with("#{Time.now.strftime('%d/%m/%Y')} || 500.00 ||  || 500.00")
+    account.print_statement
+  end
+
+  it 'Statement with multiple transactions can be printed' do
+    account.deposit(500)
+    account.withdraw(500)
+    expect(STDOUT).to receive(:puts)
+      .with('date || credit || debit || balance')
+    expect(STDOUT).to receive(:puts)
+      .with("#{Time.now.strftime('%d/%m/%Y')} || 500.00 ||  || 500.00")
+    expect(STDOUT).to receive(:puts)
+      .with("#{Time.now.strftime('%d/%m/%Y')} ||  || 500.00 || 0.00")
     account.print_statement
   end
 end
