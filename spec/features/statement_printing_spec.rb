@@ -12,7 +12,7 @@ describe 'Statement Printing' do
     account.print_statement
   end
 
-  it 'Handles statement printing with one [deposit] transaction' do
+  it 'Handles statement printing with one transaction' do
     account.deposit(500)
     expect(STDOUT).to receive(:puts)
       .with('date || credit || debit || balance')

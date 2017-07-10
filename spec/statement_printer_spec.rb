@@ -3,6 +3,9 @@ require 'statement_printer'
 describe StatementPrinter do
   subject(:statement_printer) { described_class.new }
   let(:today) { Time.now }
+  let(:deposit_500) { { date: today, credit: 500, debit: nil, balance: 500 }  }
+  let(:withdraw_500) { { date: today, credit: 500, debit: nil, balance: 500 } }
+
   describe '#print_statement' do
     it 'Prints out "No transaction history" when passed an empty array' do
       expect(STDOUT).to receive(:puts)
@@ -12,15 +15,12 @@ describe StatementPrinter do
       statement_printer.print_statement
     end
 
-    it 'Handles printing a statement with one [deposit] transaction' do
+    it 'Handles printing a statement with one transaction' do
       expect(STDOUT).to receive(:puts)
         .with('date || credit || debit || balance')
       expect(STDOUT).to receive(:puts)
         .with("#{Time.now.strftime('%d/%m/%Y')} || 500.00 ||  || 500.00")
-      statement_printer.print_statement([{date: today,
-                                          credit: 500,
-                                          debit: nil,
-                                          balance: 500}])
+      statement_printer.print_statement([deposit_500])
     end
   end
 
