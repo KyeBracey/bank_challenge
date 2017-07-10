@@ -12,8 +12,8 @@ class Account
   def deposit(amount)
     @balance += amount
     @transactions << { date: Time.now,
-                       credit: nil,
-                       debit: amount,
+                       credit: amount,
+                       debit: nil,
                        balance: @balance }
   end
 

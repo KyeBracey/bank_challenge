@@ -12,8 +12,7 @@ describe StatementPrinter do
       statement_printer.print_statement
     end
 
-    it 'Handles printing a statement with one transaction' do
-      pending('Pending while committing #format_transaction')
+    it 'Handles printing a statement with one [deposit] transaction' do
       expect(STDOUT).to receive(:puts)
         .with('date || credit || debit || balance')
       expect(STDOUT).to receive(:puts)

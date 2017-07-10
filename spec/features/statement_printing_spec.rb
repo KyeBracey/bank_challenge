@@ -12,14 +12,12 @@ describe 'Statement Printing' do
     account.print_statement
   end
 
-  it 'Handles statement printing with one transaction' do
-    pending('Feature test - WIP')
+  it 'Handles statement printing with one [deposit] transaction' do
     account.deposit(500)
     expect(STDOUT).to receive(:puts)
       .with('date || credit || debit || balance')
     expect(STDOUT).to receive(:puts)
       .with("#{Time.now.strftime('%d/%m/%Y')} || 500.00 ||  || 500.00")
-    account.deposit(500)
     account.print_statement
   end
 end
