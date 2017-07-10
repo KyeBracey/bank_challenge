@@ -18,6 +18,7 @@ class Account
   end
 
   def withdraw(amount)
+    raise 'Cannot withdraw - account is empty' if @balance == 0
     @balance -= amount
     @transactions << { date: Time.now,
                        credit: nil,

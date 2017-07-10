@@ -14,8 +14,13 @@ describe Account do
   end
 
   describe '#withdraw' do
-    it 'Deducts the amount from the balace' do
+    it 'Deducts the amount from the balance' do
+      account.deposit(500)
       expect { account.withdraw(500) }.to change { account.balance }.by(-500)
+    end
+
+    it 'Raises an error when trying to withdraw from an empty account' do
+      expect { account.withdraw(1) }.to raise_error('Cannot withdraw - account is empty')
     end
   end
 end
