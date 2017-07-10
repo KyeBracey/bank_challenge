@@ -1,7 +1,8 @@
 class Account
   attr_reader :balance
 
-  def initialize
+  def initialize(statementPrinter = StatementPrinter.new)
+    @statementPrinter = statementPrinter
     @balance = 0
   end
 
@@ -11,5 +12,9 @@ class Account
 
   def withdraw(amount)
     @balance -= amount
+  end
+
+  def print_statement
+    @statementPrinter.print_statement
   end
 end
