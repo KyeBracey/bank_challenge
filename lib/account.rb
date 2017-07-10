@@ -18,7 +18,7 @@ class Account
   end
 
   def withdraw(amount)
-    raise 'Cannot withdraw - account is empty' if @balance == 0
+    check_balance(amount)
     @balance -= amount
     @transactions << { date: Time.now,
                        credit: nil,
@@ -28,5 +28,13 @@ class Account
 
   def print_statement
     @statement_printer.print_statement(@transactions)
+  end
+
+  private
+  def check_balance(withdraw_amount)
+    raise 'Cannot withdraw - account is empty' if @balance == 0
+    if @balance < withdraw_amount
+      raise "Cannot withdraw that much - current balance: #{sprintf('%.2f', @balance)}"
+    end
   end
 end
