@@ -32,4 +32,16 @@ describe 'Statement Printing' do
       .with("#{Time.now.strftime('%d/%m/%Y')} ||  || 500.00 || 0.00")
     account.print_statement
   end
+
+  it 'Handles transactions with decimal values' do
+    account.deposit(90.93)
+    account.withdraw(67)
+    expect(STDOUT).to receive(:puts)
+      .with('date || credit || debit || balance')
+    expect(STDOUT).to receive(:puts)
+      .with("#{Time.now.strftime('%d/%m/%Y')} || 90.93 ||  || 90.93")
+    expect(STDOUT).to receive(:puts)
+      .with("#{Time.now.strftime('%d/%m/%Y')} ||  || 67.00 || 23.93")
+    account.print_statement
+  end
 end

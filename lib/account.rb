@@ -6,11 +6,11 @@ class Account
   def initialize(statement_printer = StatementPrinter.new)
     @statement_printer = statement_printer
     @transactions = []
-    @balance = 0
+    @balance = 0.0
   end
 
   def deposit(amount)
-    @balance += amount
+    @balance = (balance + amount).round(2)
     @transactions << { date: Time.now,
                        credit: amount,
                        debit: nil,
@@ -19,7 +19,7 @@ class Account
 
   def withdraw(amount)
     check_balance(amount)
-    @balance -= amount
+    @balance = (balance - amount).round(2)
     @transactions << { date: Time.now,
                        credit: nil,
                        debit: amount,

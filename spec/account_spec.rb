@@ -7,6 +7,12 @@ describe Account do
     expect(account.balance).to eq(0)
   end
 
+  it 'Handles float deposits/withdrawals' do
+    account.deposit(90.93)
+    account.withdraw(67)
+    expect(account.balance).to eq(23.93)
+  end
+
   describe '#deposit' do
     it 'Adds the amount to the balance' do
       expect { account.deposit(500) }.to change { account.balance }.by(500)

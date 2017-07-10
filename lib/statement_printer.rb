@@ -12,9 +12,9 @@ class StatementPrinter
 
   def format_transaction(transaction)
     date = transaction[:date].strftime('%d/%m/%Y')
-    credit = transaction[:credit].nil? ? nil : sprintf('%.2f', transaction[:credit])
-    debit = transaction[:debit].nil? ? nil : sprintf('%.2f', transaction[:debit])
-    balance = sprintf('%.2f', transaction[:balance])
-    "#{date} || #{credit} || #{debit} || #{balance}"
+    transaction = transaction.transform_values do |value|
+      sprintf('%.2f', value) if value.is_a? Numeric
+    end
+    "#{date} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}"
   end
 end
