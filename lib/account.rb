@@ -1,5 +1,6 @@
 require_relative 'statement_printer'
 
+# Understands the recording and management of funds
 class Account
   attr_reader :balance
 
@@ -31,10 +32,10 @@ class Account
   end
 
   private
+
   def check_balance(withdraw_amount)
-    raise 'Cannot withdraw - account is empty' if @balance == 0
-    if @balance < withdraw_amount
-      raise "Cannot withdraw that much - current balance: #{sprintf('%.2f', @balance)}"
-    end
+    fail 'Cannot withdraw - account is empty' if @balance == 0
+    return unless @balance < withdraw_amount
+    fail "Cannot withdraw that much. Balance: #{format('%.2f', @balance)}"
   end
 end

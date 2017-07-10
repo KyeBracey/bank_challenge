@@ -25,13 +25,13 @@ describe Account do
       expect { account.withdraw(500) }.to change { account.balance }.by(-500)
     end
 
-    it 'Raises an error when trying to withdraw from an empty account' do
+    it 'Raises error when trying to withdraw from an empty account' do
       expect { account.withdraw(1) }.to raise_error('Cannot withdraw - account is empty')
     end
 
-    it 'Raises an error when trying to withdraw more than the current balance' do
+    it 'Raises error when trying to withdraw more than the current balance' do
       account.deposit(200)
-      expect { account.withdraw(500) }.to raise_error('Cannot withdraw that much - current balance: 200.00')
+      expect { account.withdraw(500) }.to raise_error('Cannot withdraw that much. Balance: 200.00')
     end
   end
 end

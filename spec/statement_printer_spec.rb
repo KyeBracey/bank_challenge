@@ -3,7 +3,7 @@ require 'statement_printer'
 describe StatementPrinter do
   subject(:statement_printer) { described_class.new }
   let(:today) { Time.now }
-  let(:deposit_500) { { date: today, credit: 500, debit: nil, balance: 500 }  }
+  let(:deposit_500) { { date: today, credit: 500, debit: nil, balance: 500 } }
   let(:withdraw_500) { { date: today, credit: nil, debit: 500, balance: 0 } }
 
   describe '#print_statement' do
