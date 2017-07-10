@@ -13,4 +13,10 @@ describe Account do
     end
   end
 
+  describe '#withdraw' do
+    it 'Deducts the amount from the balace' do
+      expect { account.withdraw(500) }.to change { account.balance }.by(-500)
+    end
+  end
+
 end
