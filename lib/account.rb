@@ -1,8 +1,8 @@
 class Account
   attr_reader :balance
 
-  def initialize(statementPrinter = StatementPrinter.new)
-    @statementPrinter = statementPrinter
+  def initialize(statement_printer = StatementPrinter.new)
+    @statement_printer = statement_printer
     @balance = 0
   end
 
@@ -15,6 +15,6 @@ class Account
   end
 
   def print_statement
-    @statementPrinter.print_statement
+    @statement_printer.print_statement
   end
 end
