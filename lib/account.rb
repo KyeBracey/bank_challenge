@@ -1,3 +1,4 @@
+require_relative 'transaction'
 require_relative 'statement_printer'
 
 # Understands the deposit/withdrawal of funds and recording of transactions
