@@ -7,6 +7,7 @@
 - Clone this repo onto your local machine
 - `$ cd bank_challenge`
 - `$ bundle install`
+- To run the tests: `$ rspec`
 - `$ irb`
 - `require ./lib/account.rb`
 - Create a new account: `account = Account.new`
@@ -15,7 +16,7 @@
 - To print statement: `account.print_statement`
 - `quit` to quit irb
 
-![User instructions](./bank_user_instructions.png)
+![User instructions](https://user-images.githubusercontent.com/25885650/28062164-f73c2c86-6624-11e7-84b5-5a678b7c55ee.png)
 
 ## User Stories
 
