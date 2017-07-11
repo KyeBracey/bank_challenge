@@ -1,6 +1,6 @@
 require_relative 'statement_printer'
 
-# Understands the recording and management of funds
+# Understands the deposit/withdrawal of funds and recording of transactions
 class Account
   attr_reader :balance
 
