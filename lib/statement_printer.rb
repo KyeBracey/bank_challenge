@@ -2,10 +2,7 @@
 class StatementPrinter
   def print_statement(transactions = [])
     puts 'date || credit || debit || balance'
-    if transactions == []
-      puts 'No transaction history'
-      return
-    end
+    puts 'No transaction history' and return if transactions == []
     transactions.each do |transaction|
       puts format_transaction(transaction.information)
     end
