@@ -7,7 +7,7 @@ class StatementPrinter
       return
     end
     transactions.each do |transaction|
-      puts format_transaction(transaction)
+      puts format_transaction(transaction.information)
     end
   end
 

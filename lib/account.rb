@@ -12,19 +12,13 @@ class Account
 
   def deposit(amount)
     @balance = (balance + amount).round(2)
-    @transactions << { date: Time.now,
-                       credit: amount,
-                       debit: nil,
-                       balance: @balance }
+    @transactions << Transaction.new(Time.now, amount, nil, @balance)
   end
 
   def withdraw(amount)
     check_balance(amount)
     @balance = (balance - amount).round(2)
-    @transactions << { date: Time.now,
-                       credit: nil,
-                       debit: amount,
-                       balance: @balance }
+    @transactions << Transaction.new(Time.now, nil, amount, @balance)
   end
 
   def print_statement

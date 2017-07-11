@@ -1,12 +1,11 @@
 # Understands the recording and showing of transaction information
-
 class Transaction
-  attr_reader :date, :credit, :debit, :balance
+  attr_reader :information
 
   def initialize(date, credit, debit, balance)
-    @date = date
-    @credit = credit
-    @debit = debit
-    @balance = balance
+    @information = { date: date,
+                     credit: credit,
+                     debit: debit,
+                     balance: balance }
   end
 end
